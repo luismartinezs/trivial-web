@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Trivial from './components/Trivial';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Trivial Game</h1>
-        <p>Answer 10 random questions and try to score a 10!</p>
-        <button>Play</button>
+        <Trivial />
       </div>
     );
   }

@@ -5,13 +5,17 @@ Steps:
 - if user clicks play, he can start the game
 - 10 questions, 4 possible choices, only one is right
 - user can mark one answer, then click on confirm answer
-- if answer is correct, user will see a "correct" message, if not, they'll see a "wrong" mesg and which choice was the correct one
+- if answer is correct, user will see a "correct" message, if not, they'll see a "wrong" msg and which choice was the correct one
 - after answering 10 questions, user will access score screen. User will see how many questions they got right
 - In score screen there is a button "replay" that will restart the game
 - At all times there is a navigation button somewhere that allows the user to restart/reset the game "restart"
 
 > Sketch views
+ 
+
 > Write static website: separate styles from structure
+- Tab view is shown always on the bottom
+
 > Write tests to pass user stories
 > Determine states required and where they go
 > Write code that passes the tests
@@ -41,6 +45,10 @@ Object {
 }
 
 - fetch data asynchronously from external end point
+
+https://opentdb.com/api_config.php
+API call: https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple
+
 - Print question and answer options on screen
 - Allow marking one of the answers, and keep it highlighted
 
