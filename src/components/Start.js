@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 
 class Start extends React.Component {
@@ -7,7 +7,7 @@ class Start extends React.Component {
             <div className='start'>
                 <h1>Trivial Game</h1>
                 <p>Answer 10 random questions about videogames and try to score a 10!</p>
-                <Button>Play</Button>
+                <Button data-btn-play>Play</Button>
             </div>
         );
     }

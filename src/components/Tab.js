@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid, Row, Button, Col } from 'react-bootstrap';
 
 class Tab extends React.Component {
@@ -11,7 +11,7 @@ class Tab extends React.Component {
                             <span className='title'>Trivial Game</span>
                         </Col>
                         <Col xs={6}>
-                            <Button>Restart</Button>
+                            <Button data-btn-reset>Restart</Button>
                         </Col>
                     </Row>
                 </Grid>

@@ -49,7 +49,7 @@ Object {
 https://opentdb.com/api_config.php
 API call: https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple
 
-- Print question and answer options on screen
+- Print question and answer options on screen OK
 - Allow marking one of the answers, and keep it highlighted
 
 - Show & characters in the right format

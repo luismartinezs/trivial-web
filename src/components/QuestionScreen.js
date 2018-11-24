@@ -7,7 +7,7 @@ class QuestionScreen extends React.Component {
     render() {
         return (
             <div className='question-screen'>
-                <Question />
+                <Question question={this.props.questions[0]} />
             </div>
         );
     }
