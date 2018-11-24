@@ -31,11 +31,11 @@ class Question extends React.Component {
                     </Row>
                     <hr />
                     <Row>
-                        <Col xs={4}></Col>
-                        <Col xs={4}>
-                            <Button className='btn mx-1 mb-1 center-block' block data-btn-confirm='1'>Confirm</Button>
+                        <Col xs={1}></Col>
+                        <Col xs={10}>
+                            <Button className='btn mx-1 mb-1 center-block btn-cta' block data-btn-confirm='1'>Confirm</Button>
                         </Col>
-                        <Col xs={4}></Col>
+                        <Col xs={1}></Col>
                     </Row>
                     {/* <Row><span className='confirm-msg correct'>Correct!</span></Row> */}
                 </Grid>

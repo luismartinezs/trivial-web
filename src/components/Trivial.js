@@ -4,7 +4,7 @@ import MainView from './MainView';
 import Tab from './Tab';
 import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux'
-import { decodeHtml, shuffleArray }  from './helpers';
+import { decodeHtml, shuffleArray } from './helpers';
 
 
 
@@ -49,7 +49,7 @@ class Trivial extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            roundsNumber: 10,
+            roundsNumber: 2,
             isLoading: true,
             screen: 'start', // 'start', 'questionScreen', 'score', 'error'
             questions: {},
@@ -67,7 +67,7 @@ class Trivial extends React.Component {
 
         // initial data fetch
         async function asyncMethod() {
-            let url = 'https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple';
+            let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
 
             return fetch(url)
                 .then((response) => response.json())
@@ -114,16 +114,16 @@ class Trivial extends React.Component {
             if (confirmBtn.textContent === 'Confirm') {
 
                 console.log('selected answer');
-                console.log(event.target,'was clicked');
+                console.log(event.target, 'was clicked');
                 let buttons = document.querySelectorAll(`[data-btn-index]`);
-    
+
                 Array.from(buttons).forEach((btn) => {
                     btn.classList.remove('btn-info');
                     btn.dataset.selected = '0';
                 });
                 event.target.classList.add('btn-info');
                 event.target.dataset.selected = '1';
-                
+
             }
         }
 
@@ -157,9 +157,9 @@ class Trivial extends React.Component {
                     let correctBtn = Array.from(buttons).find((btn) => {
                         return btn.textContent === correctAnswer;
                     });
-                    console.log('correctBtn:',correctBtn);
+                    console.log('correctBtn:', correctBtn);
                     console.log('buttons:', buttons);
-                    console.log('correctAnswer:',correctAnswer);
+                    console.log('correctAnswer:', correctAnswer);
 
                     let choosenAnswer = selectedBtn.textContent;
 
@@ -178,8 +178,8 @@ class Trivial extends React.Component {
 
                     } else {
                         // answer given was wrong
-                        console.log('selectedBtn:',selectedBtn);
-                        console.log('correctBtn:',correctBtn);
+                        console.log('selectedBtn:', selectedBtn);
+                        console.log('correctBtn:', correctBtn);
                         selectedBtn.classList.add('btn-danger');
                         correctBtn.classList.add('btn-success');
                     }
@@ -242,7 +242,7 @@ class Trivial extends React.Component {
             });
 
             async function asyncMethod() {
-                let url = 'https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple';
+                let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
 
                 return fetch(url)
                     .then((response) => response.json())
@@ -281,9 +281,11 @@ class Trivial extends React.Component {
     render() {
         console.log('before render', this.state.currentQuestionIndex);
         return (
-            <div className='trivialContainer'>
-                <Tab />
-                <MainView props={this.state} />
+            <div className='trivialWrapper'>
+                <div className='trivialContainer'>
+                    <Tab />
+                    <MainView props={this.state} />
+                </div>
             </div>
         );
     }

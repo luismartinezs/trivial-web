@@ -56,6 +56,10 @@ API call: https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&ty
 
 What's missing:
 
-- Better styling and colors
+- Better styling and colors OK
+
+- Create loading screen
+- Allow user to select topic
+- Remove duplicate code
 - Test in other browsers
 - Build and test build on phone

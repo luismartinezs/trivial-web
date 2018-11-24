@@ -1,3 +1,9 @@
+/* GENERAL DESIGN AND APPEARANCE */
+
+body {
+    font-size: 1.8rem;
+}
+
 /* HELPER CLASSES */
 
 .mx-1 {
@@ -16,22 +22,45 @@
     margin-right: auto;
 }
 
-/* APP CLASSES */
+.text-left {
+    text-align: left;
+}
 
-.trivialContainer {
-    background-color: rgb(190, 238, 238);
+.text-right {
+    text-align: right;
+}
+
+/* CUSTOM CLASSES */
+
+.trivialWrapper {
+    /* background-color: rgb(190, 238, 238); */
+    background: linear-gradient(45deg, rgb(157, 238, 238) 50%, rgb(190, 238, 238) 50%);
     width: 100%;
     height: 100%;
     text-align: center;
 }
 
+.mainView-wrapper {
+    padding: 10pt;
+    width: 100%;
+    height: 100%;
+}
+
 .tab-wrapper {
-    padding: 5pt;
     box-shadow: 0 0 4pt 0 rgba(0,0,0,0.2);
+    background-color: rgb(113, 234, 255);
+}
+
+.tab-container {
+    padding: 5pt;
 }
 
 .title {
+    display: block;
     font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0.7rem;
 }
 
 .question {
@@ -48,4 +77,21 @@
 
 .wrong {
     color: rgb(165, 51, 51);
+}
+
+.btn-cta {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.score {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.score-value {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }

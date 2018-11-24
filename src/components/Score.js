@@ -9,12 +9,12 @@ class Score extends React.Component {
         let msg = '';
         switch(state.score) {
             case 0:
-                msg = `Do you even play???`;
+                msg = `Did you even try...?`;
                 break;
             case 1:
             case 2:
             case 3:
-                msg = `My grandma knows more about games than you`;
+                msg = `My 5 year old knows more than you`;
                 break;
             case 4:
             case 5:
@@ -26,20 +26,21 @@ class Score extends React.Component {
                 msg = `Wow, you know quite a lot!`;
                 break;
             case 9:
-                msg = `I can't believe how powerful you are!`;
+                msg = `I can't believe how wise you are!`;
                 break;
             case 10:
-                msg = `You're a legend, your power level is beyond this world...`;
+                msg = `You're a legend, your knowledge is beyond this world...`;
                 break;
             default:
-                msg = 'something went wrong with your score';
+                msg = 'something went wrong with your score... :(';
         }
 
         return (
-            <div className='score'>
-                <p>Your score: {state.score}/10</p>
+            <div>
+                <p className='score'>Your score:</p>
+                <p className='score-value'>{state.score}/10</p>
                 <p>{msg}</p>
-                <Button data-btn-reset>Play again</Button>
+                <Button className='btn-cta' data-btn-reset>Play again</Button>
             </div>
         );
     }

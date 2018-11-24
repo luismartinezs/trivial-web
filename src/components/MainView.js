@@ -7,13 +7,20 @@ import Score from './Score';
 class MainView extends React.Component {
     render() {
         let state = this.props.props;
+        let category = '';
+
+        if (state.questions[0] !== undefined) {
+            category = state.questions[0].category;
+        }
+
         if (state.screen === 'start') {
             return (
                 <div className='mainView-wrapper'>
-                    <Start />
+                    <Start category={category} />
                 </div>
             );
         }
+
         if (state.screen === 'questionScreen') {
             return (
                 <div className='mainView-wrapper'>
@@ -21,6 +28,7 @@ class MainView extends React.Component {
                 </div>
             );
         }
+
         if (this.props.props.screen === 'score') {
             return (
                 <div className='mainView-wrapper'>
@@ -28,6 +36,7 @@ class MainView extends React.Component {
                 </div>
             );
         }
+        
     }
 }
 
