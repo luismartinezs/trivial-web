@@ -50,6 +50,12 @@ https://opentdb.com/api_config.php
 API call: https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple
 
 - Print question and answer options on screen OK
-- Allow marking one of the answers, and keep it highlighted
+- Allow marking one of the answers, and keep it highlighted OK
 
-- Show & characters in the right format
+- Show & characters in the right format OK
+
+What's missing:
+
+- Better styling and colors
+- Test in other browsers
+- Build and test build on phone

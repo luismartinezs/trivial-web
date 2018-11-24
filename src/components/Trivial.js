@@ -152,7 +152,7 @@ class Trivial extends React.Component {
 
                     // get the content of the selected answer
 
-                    let correctAnswer = this.state.questions[currentQuestionIndex].correct_answer;
+                    let correctAnswer = decodeHtml(this.state.questions[currentQuestionIndex].correct_answer);
 
                     let correctBtn = Array.from(buttons).find((btn) => {
                         return btn.textContent === correctAnswer;
