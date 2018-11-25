@@ -11,13 +11,30 @@ class Trivial extends React.Component {
         this.state = initialState();
         this.handleClick = this.handleClick.bind(this);
         this.shuffleQuestions = this.shuffleQuestions.bind(this);
+        this.getResources = this.getResources.bind(this);
     }
 
     componentDidMount() {
-        let _this = this;
 
         // initial data fetch
-        // this function is called twice, it should appear only once
+        this.getResources();
+
+        document.addEventListener('click', this.handleClick);
+
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick);
+    }
+
+    /*
+    * Fetching of external data is done in initial mount and when reset button is clicked
+    */
+    getResources() {
+        let _this = this;
+
+        asyncMethod();
+
         async function asyncMethod() {
             let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
 
@@ -32,18 +49,17 @@ class Trivial extends React.Component {
 
                 })
                 .catch((error) => {
+                    
+                    _this.setState({
+                        screen: 'error',
+                    });
+
                     console.log(error);
+
                 });
-        };
 
-        asyncMethod();
+        }
 
-        document.addEventListener('click', this.handleClick);
-
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClick);
     }
 
     // events on all buttons are delegated on this method
@@ -160,31 +176,10 @@ class Trivial extends React.Component {
 
         if (event.target.dataset.btnReset !== undefined) {
             // fetch data again and reset everything
-            let _this = this;
-
             // I'd like that the initial state is held within a constant somewhere to be reused
             this.setState( initialState() );
 
-            // second use of asyncMethod, declared twice, bad practice
-            async function asyncMethod() {
-                let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
-
-                return fetch(url)
-                    .then((response) => response.json())
-                    .then((responseJson) => {
-
-                        _this.setState({
-                            isLoading: false,
-                            questions: responseJson.results,
-                        });
-
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            };
-
-            asyncMethod();
+            this.getResources();
 
         }
     }

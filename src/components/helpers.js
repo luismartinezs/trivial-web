@@ -32,4 +32,4 @@ function initialState() {
     };
 }
 
-export { decodeHtml , shuffleArray , initialState };
+export { decodeHtml, shuffleArray, initialState };
