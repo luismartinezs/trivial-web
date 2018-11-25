@@ -19,4 +19,17 @@ function shuffleArray(array) {
     return array;
 }
 
-export { decodeHtml , shuffleArray };
+function initialState() {
+    return {
+        roundsNumber: 10,
+        isLoading: true,
+        screen: 'start', // 'start', 'questionScreen', 'score', 'error'
+        questions: {},
+        currentQuestionIndex: 0,
+        currentAnswered: false,
+        score: 0,
+        shuffledQuestions: [],
+    };
+}
+
+export { decodeHtml , shuffleArray , initialState };

@@ -2,22 +2,13 @@ import React from 'react';
 import './style.css'
 import MainView from './MainView';
 import Tab from './Tab';
-import { decodeHtml, shuffleArray } from './helpers';
+import { decodeHtml, shuffleArray, initialState } from './helpers';
 
 // REACT
 class Trivial extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            roundsNumber: 10,
-            isLoading: true,
-            screen: 'start', // 'start', 'questionScreen', 'score', 'error'
-            questions: {},
-            currentQuestionIndex: 0,
-            currentAnswered: false,
-            score: 0,
-            shuffledQuestions: [],
-        };
+        this.state = initialState();
         this.handleClick = this.handleClick.bind(this);
         this.shuffleQuestions = this.shuffleQuestions.bind(this);
     }
@@ -172,15 +163,7 @@ class Trivial extends React.Component {
             let _this = this;
 
             // I'd like that the initial state is held within a constant somewhere to be reused
-            this.setState({
-                isLoading: true,
-                screen: 'start', // 'start', 'questionScreen', 'score', 'error'
-                questions: {},
-                currentQuestionIndex: 0,
-                currentAnswered: false,
-                score: 0,
-                shuffledQuestions: [],
-            });
+            this.setState( initialState() );
 
             // second use of asyncMethod, declared twice, bad practice
             async function asyncMethod() {
