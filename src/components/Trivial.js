@@ -60,7 +60,6 @@ class Trivial extends React.Component {
 
         // handles starting the game
         if (event.target.dataset.btnPlay !== undefined) {
-            console.log('clicked play');
             this.shuffleQuestions();
             this.setState({
                 screen: 'questionScreen',
@@ -123,12 +122,9 @@ class Trivial extends React.Component {
                         // answer given was correct
                         selectedBtn.classList.add('btn-success');
                         this.setState({ score: +this.state.score + 1 });
-                        console.log('score increased by 1');
 
                     } else {
                         // answer given was wrong
-                        console.log('selectedBtn:', selectedBtn);
-                        console.log('correctBtn:', correctBtn);
                         selectedBtn.classList.add('btn-danger');
                         correctBtn.classList.add('btn-success');
                     }

@@ -59,7 +59,7 @@ What's missing:
 - Better styling and colors OK
 
 - Create loading screen OK
-- clean up code, remove console.logs
+- clean up code, remove console.logs OK
 - Remove duplicate code
     - initial state
     - asyncMethod
