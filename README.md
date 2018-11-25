@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+See UI view: https://luismartinezs.github.io/trivial-web/
+
+## Add the Trivial to any website
+To use it anywhere, import the React (https://reactjs.org/docs/create-a-new-react-app.html) and Boostrap 3 modules (https://react-bootstrap.github.io/getting-started/introduction), copy the "src/components" folder and its contents in the root, and import the trivial to the main app with:
+
+```
+import Trivial from './components/Trivial';
+```
+
+The trivial component should adapt to the shape of its container element.
+
 ## Available Scripts
 
 In the project directory, you can run:
