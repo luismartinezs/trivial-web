@@ -2,54 +2,14 @@ import React from 'react';
 import './style.css'
 import MainView from './MainView';
 import Tab from './Tab';
-import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux'
 import { decodeHtml, shuffleArray } from './helpers';
-
-
-
-// REDUX
-
-// ACTION CREATOR
-const ADD_DATA = 'ADD_DATA';
-
-const addData = (data) => {
-    return {
-        type: ADD_DATA,
-        data: data,
-    }
-}
-
-// REDUCER
-const reducer = (state = {}, action) => {
-    let newState = {}
-    switch (action.type) {
-        case ADD_DATA:
-            return Object.assign(newState, state, action.data);
-        default:
-            return state;
-    }
-}
-
-// CREATE STORE
-const store = createStore(reducer);
-
-const initialState = {
-    isLoading: true,
-    screen: 'start', // 'start', 'questionScreen', 'score', 'error'
-    questions: {},
-    currentQuestionIndex: 0,
-    currentAnswered: false,
-    score: 0,
-    shuffledQuestions: [],
-};
 
 // REACT
 class Trivial extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            roundsNumber: 2,
+            roundsNumber: 10,
             isLoading: true,
             screen: 'start', // 'start', 'questionScreen', 'score', 'error'
             questions: {},
@@ -66,6 +26,7 @@ class Trivial extends React.Component {
         let _this = this;
 
         // initial data fetch
+        // this function is called twice, it should appear only once
         async function asyncMethod() {
             let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
 
@@ -94,7 +55,7 @@ class Trivial extends React.Component {
         document.removeEventListener('click', this.handleClick);
     }
 
-    // make general event handler for clicking a button, that calls different methods depending on button props
+    // events on all buttons are delegated on this method
     handleClick(event) {
 
         // handles starting the game
@@ -113,8 +74,6 @@ class Trivial extends React.Component {
 
             if (confirmBtn.textContent === 'Confirm') {
 
-                console.log('selected answer');
-                console.log(event.target, 'was clicked');
                 let buttons = document.querySelectorAll(`[data-btn-index]`);
 
                 Array.from(buttons).forEach((btn) => {
@@ -130,8 +89,6 @@ class Trivial extends React.Component {
         // confirm / next button was clicked
         if (event.target.dataset.btnConfirm !== undefined) {
 
-            console.log('clicked confirm/next');
-
             let currentQuestionIndex = this.state.currentQuestionIndex;
 
             let buttons = document.querySelectorAll(`[data-btn-index]`);
@@ -143,23 +100,15 @@ class Trivial extends React.Component {
             // button was in confirm
             if (event.target.textContent === 'Confirm') {
 
-                console.log('clicked confirm');
-
                 // there was one selected answer
                 if (selectedBtn !== undefined) {
 
-                    console.log('there was one selected answer');
-
                     // get the content of the selected answer
-
                     let correctAnswer = decodeHtml(this.state.questions[currentQuestionIndex].correct_answer);
 
                     let correctBtn = Array.from(buttons).find((btn) => {
                         return btn.textContent === correctAnswer;
                     });
-                    console.log('correctBtn:', correctBtn);
-                    console.log('buttons:', buttons);
-                    console.log('correctAnswer:', correctAnswer);
 
                     let choosenAnswer = selectedBtn.textContent;
 
@@ -188,12 +137,9 @@ class Trivial extends React.Component {
                     } else {
                         event.target.textContent = 'Next question';
                     }
-
-                    console.log('current score:', this.state.score);
                 }
                 // button was in next
             } else {
-                console.log('clicked next');
 
                 if (currentQuestionIndex < this.state.roundsNumber - 1) {
 
@@ -211,7 +157,6 @@ class Trivial extends React.Component {
                     });
 
                     event.target.textContent = 'Confirm';
-                    console.log('after increase', this.state.currentQuestionIndex);
 
                     this.shuffleQuestions();
 
@@ -227,10 +172,10 @@ class Trivial extends React.Component {
         }
 
         if (event.target.dataset.btnReset !== undefined) {
-            console.log('clicked on reset');
             // fetch data again and reset everything
             let _this = this;
 
+            // I'd like that the initial state is held within a constant somewhere to be reused
             this.setState({
                 isLoading: true,
                 screen: 'start', // 'start', 'questionScreen', 'score', 'error'
@@ -241,6 +186,7 @@ class Trivial extends React.Component {
                 shuffledQuestions: [],
             });
 
+            // second use of asyncMethod, declared twice, bad practice
             async function asyncMethod() {
                 let url = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple';
 
@@ -270,8 +216,6 @@ class Trivial extends React.Component {
 
         let shuffledQuestions = shuffledHTMLArray.map((elem) => { return decodeHtml(elem) });
 
-        console.log('shuffled questions:', shuffledQuestions);
-
         this.setState({
             shuffledQuestions: shuffledQuestions,
         });
@@ -279,7 +223,6 @@ class Trivial extends React.Component {
     }
 
     render() {
-        console.log('before render', this.state.currentQuestionIndex);
         return (
             <div className='trivialWrapper'>
                 <div className='trivialContainer'>
@@ -291,32 +234,4 @@ class Trivial extends React.Component {
     }
 }
 
-// REACT+REDUX
-
-function mapStateToProps(state) {
-    return {
-        data: state,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        addNewData: function (data) {
-            return (dispatch(addData(data)));
-        }
-    };
-}
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(Trivial);
-
-class AppWrapper extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Container />
-            </Provider>
-        );
-    }
-}
-
-export default AppWrapper;
+export default Trivial;

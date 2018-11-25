@@ -16,7 +16,6 @@ class Question extends React.Component {
                 <h2>Question #{_currentQuestionIndex+1}</h2>
                 <p>{question}</p>
                 <Grid>
-                    {/* selected: btn-info, success: btn-success, wrong: btn-danger */}
                     <Row>
                         <Button className='mb-1' block data-btn-index='0' data-selected='0'>{state.shuffledQuestions[0]}</Button>
                     </Row>
@@ -37,7 +36,6 @@ class Question extends React.Component {
                         </Col>
                         <Col xs={1}></Col>
                     </Row>
-                    {/* <Row><span className='confirm-msg correct'>Correct!</span></Row> */}
                 </Grid>
             </div>
         );

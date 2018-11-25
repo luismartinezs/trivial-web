@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Row, Button, Col } from 'react-bootstrap';
 import Start from './Start';
 import Question from './Question';
 import Score from './Score';
+import LoadingScreen from './LoadingScreen';
 
 class MainView extends React.Component {
     render() {
@@ -11,6 +11,14 @@ class MainView extends React.Component {
 
         if (state.questions[0] !== undefined) {
             category = state.questions[0].category;
+        }
+
+        if (state.isLoading) {
+            return (
+                <div className='mainView-wrapper'>
+                    <LoadingScreen />
+                </div>
+            );
         }
 
         if (state.screen === 'start') {
@@ -29,14 +37,14 @@ class MainView extends React.Component {
             );
         }
 
-        if (this.props.props.screen === 'score') {
+        if (state.screen === 'score') {
             return (
                 <div className='mainView-wrapper'>
                     <Score props={state}/>
                 </div>
             );
         }
-        
+
     }
 }
 

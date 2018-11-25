@@ -58,8 +58,13 @@ What's missing:
 
 - Better styling and colors OK
 
-- Create loading screen
-- Allow user to select topic
+- Create loading screen OK
+- clean up code, remove console.logs
 - Remove duplicate code
+    - initial state
+    - asyncMethod
 - Test in other browsers
 - Build and test build on phone
+
+Maybe:
+- Allow user to select topic 
