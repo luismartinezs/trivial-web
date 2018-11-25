@@ -61,9 +61,12 @@ What's missing:
 - Create loading screen OK
 - clean up code, remove console.logs OK
 - Remove duplicate code
-    - initial state
-    - asyncMethod
-- Test in other browsers
+    - initial state OK
+    - asyncMethod OK
+- If fetching fails show error screen OK
+- button content sometimes doesnt fit buttom OK
+- Test in other browsers OK
+- Use strict
 - Build and test build on phone
 
 Maybe:

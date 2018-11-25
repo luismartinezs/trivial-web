@@ -31,6 +31,10 @@ body {
     text-align: right;
 }
 
+.wrap {
+    white-space: normal;
+}
+
 /* CUSTOM CLASSES */
 
 .trivialWrapper {

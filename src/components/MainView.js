@@ -3,6 +3,7 @@ import Start from './Start';
 import Question from './Question';
 import Score from './Score';
 import LoadingScreen from './LoadingScreen';
+import Error from './Error';
 
 class MainView extends React.Component {
     render() {
@@ -41,6 +42,14 @@ class MainView extends React.Component {
             return (
                 <div className='mainView-wrapper'>
                     <Score props={state}/>
+                </div>
+            );
+        }
+
+        if (state.screen === 'error') {
+            return (
+                <div className='mainView-wrapper'>
+                    <Error />
                 </div>
             );
         }

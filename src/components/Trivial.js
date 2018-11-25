@@ -49,12 +49,13 @@ class Trivial extends React.Component {
 
                 })
                 .catch((error) => {
-                    
+
                     _this.setState({
                         screen: 'error',
+                        isLoading: false,
                     });
 
-                    console.log(error);
+                    console.error(error);
 
                 });
 

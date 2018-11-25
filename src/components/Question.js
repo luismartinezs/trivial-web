@@ -17,16 +17,16 @@ class Question extends React.Component {
                 <p>{question}</p>
                 <Grid>
                     <Row>
-                        <Button className='mb-1' block data-btn-index='0' data-selected='0'>{state.shuffledQuestions[0]}</Button>
+                        <Button className='mb-1 wrap' block data-btn-index='0' data-selected='0'>{state.shuffledQuestions[0]}</Button>
                     </Row>
                     <Row>
-                        <Button className='mb-1' block data-btn-index='1' data-selected='0'>{state.shuffledQuestions[1]}</Button>
+                        <Button className='mb-1 wrap' block data-btn-index='1' data-selected='0'>{state.shuffledQuestions[1]}</Button>
                     </Row>
                     <Row>
-                        <Button className='mb-1' block data-btn-index='2' data-selected='0'>{state.shuffledQuestions[2]}</Button>
+                        <Button className='mb-1 wrap' block data-btn-index='2' data-selected='0'>{state.shuffledQuestions[2]}</Button>
                     </Row>
                     <Row>
-                        <Button className='mb-1' block data-btn-index='3' data-selected='0'>{state.shuffledQuestions[3]}</Button>
+                        <Button className='mb-1 wrap' block data-btn-index='3' data-selected='0'>{state.shuffledQuestions[3]}</Button>
                     </Row>
                     <hr />
                     <Row>
