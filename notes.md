@@ -66,7 +66,7 @@ What's missing:
 - If fetching fails show error screen OK
 - button content sometimes doesnt fit buttom OK
 - Test in other browsers OK
-- Use strict
+- Use strict --not needed
 - Build and test build on phone
 
 Maybe:
